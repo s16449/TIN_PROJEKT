@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <title>Lecznica dla zwierząt "FRODO"</title>
+</head>
+
+<body>
+    <header>
+        <img src="../images/vetLogo.png" alt="Lecznica Frodo">
+        <h1>Lecznica dla zwierząt "FRODO"</h1>
+        <img src="../images/ferdi340.png" alt="Lecznica Frodo">
+        <img src="../images/vetLogo.png" alt="Lecznica Frodo">
+    </header>
+    <nav>
+        <ul>
+            <li> <a href="../index.html">Strona główna</a></li>
+            <li><a href="doctors.html">Nasi Specjaliści</a></li>
+            <li><a href="range.html">Zakres usług</a></li>
+            <li><a href="pet-photos.html">Nasi Pacjenci - Galeria</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="doc.html" class="active">Zarządzaj</a></li>
+
+        </ul>
+        <div class="login">Zalogowany: Lekarz</div>
+    </nav>
+    <main>
+        <h2>Edytuj wizytę</h2>
+        <form class="form">
+
+            <label for="firstName">Imię :</label>
+            <input type="text" value="Maciej" name="firstName" id="firstName" disabled />
+
+            <label for="lastname">Nazwisko :</label>
+            <input type="text" value="Jasiński" name="lastname" id="lastname" disabled />
+
+            <label for="choice-pet">Pupil :</label>
+            <select class="form-select" name="choice-pet" id="choice-pet">
+                <option value="1">Marcel</option>
+                <option value="2">Figa</option>
+                <option value="3">Milka</option>
+                <option value="4">Fluffy</option>
+                <option value="5">Frodo</option>
+                <option value="6">Rocket</option>
+            </select>
+
+            <label for="visitDate">Data wizyty: </label>
+            <input type="date" name="visitDate" id="visitDate" disabled />
+
+            <label for="choice-visit">Cel wizyty :</label>
+            <select class="form-select" name="choice-visit" id="choice-visit">
+                <option value="1">Konsultacja</option>
+                <option value="2">Zabieg</option>
+                <option value="3">Stomatologia</option>
+                <option value="4">Badanie kontrolne</option>
+            </select>
+
+
+
+
+            <label for="textfield">Opis wizyty i zalecenia:</label>
+
+            <textarea class="textarea" name="textfield" id="textfield" rows="20" cols="50"></textarea>
+
+
+
+            <div class="form-buttons">
+                <input class="form-button-submit" type="submit" value="Zapisz edycję wizyty" />
+                <a class="form-button-cancel" href="doc.html">Anuluj</a>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p> Mariusz Polak - s16449</p>
+    </footer>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <title>Lecznica dla zwierząt "FRODO"</title>
+</head>
+
+<body>
+    <header>
+        <img src="../images/vetLogo.png" alt="Lecznica Frodo">
+        <h1>Lecznica dla zwierząt "FRODO"</h1>
+        <img src="../images/ferdi340.png" alt="Lecznica Frodo">
+        <img src="../images/vetLogo.png" alt="Lecznica Frodo">
+    </header>
+    <nav>
+        <ul>
+            <li> <a href="../index.html">Strona główna</a></li>
+            <li><a href="doctors.html">Nasi Specjaliści</a></li>
+            <li><a href="range.html">Zakres usług</a></li>
+            <li><a href="pet-photos.html">Nasi Pacjenci - Galeria</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="patient.html" class="active">Moje informacje</a></li>
+        </ul>
+        <div class="login">Zalogowany: Pacjent</div>
+    </nav>
+    <main>
+        <h2>Informacje o wizycie</h2>
+        <form class="form">
+
+            <label for="firstName">Imię:</label>
+            <input type="text" name="firstName" value="Maciej" id="firstName" disabled />
+
+            <label for="lastname">Nazwisko:</label>
+            <input type="text" name="lastname" value="Jasiński" id="lastname" disabled />
+
+
+            <label for="pupil">Pupil:</label>
+            <input type="text" name="pupil" value="Marcel" id="pupil" disabled />
+
+
+
+        </form>
+        <h2>Historia wizyt</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Data wizyty</th>
+                        <th>Cel wizyty</th>
+                        <th>Przyjęty u lekarza</th>
+                        <th>Zalecenia / Informacje</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2019-05-21</td>
+                        <td>Zabieg</td>
+                        <td>Jan Kowalski</td>
+                        <td>Zabieg polegający na skróceniu ząbków. Większych nieprawidłowości nie stwierdzono. Królik
+                            dobrze się czuje. </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="form-buttons">
+            <a href="patient.html" class="form-button-back">Powrót</a>
+        </div>
+    </main>
+    <footer>
+        <p> Mariusz Polak - s16449</p>
+    </footer>

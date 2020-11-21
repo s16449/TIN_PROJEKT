@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <title>Lecznica dla zwierząt "FRODO"</title>
+</head>
+
+<body>
+    <header>
+        <img src="../images/vetLogo.png" alt="Lecznica Frodo">
+        <h1>Lecznica dla zwierząt "FRODO"</h1>
+        <img src="../images/ferdi340.png" alt="Lecznica Frodo">
+        <img src="../images/vetLogo.png" alt="Lecznica Frodo">
+    </header>
+    <nav>
+        <ul>
+            <li> <a href="../index.html">Strona główna</a></li>
+            <li><a href="doctors.html">Nasi Specjaliści</a></li>
+            <li><a href="range.html">Zakres usług</a></li>
+            <li><a href="pet-photos.html">Nasi Pacjenci - Galeria</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="doc.html" class="active">Zarządzaj</a></li>
+
+        </ul>
+        <div class="login">Zalogowany: Lekarz</div>
+    </nav>
+    <main>
+        <h2>Rejestracja właściciela</h2>
+        <form class="form">
+
+            <label for="firstName">Imię:<sup>*</sup></label>
+            <input type="text" name="firstName" id="firstName">
+
+            <label for="lastname">Nazwisko:<sup>*</sup></label>
+            <input type="text" name="lastname" id="lastname">
+
+            <label for="email">Email:<sup>*</sup></label>
+            <input type="email" name="email" id="email">
+
+            <label for="login">Nadany login:<sup>*</sup></label>
+            <input type="text" name="login" id="login">
+
+            <label for="password">Tymczasowe hasło:<sup>*</sup></label>
+            <input type="text" name="password" id="password">
+
+            <label for="phone">Telefon kontaktowy:<sup>*</sup></label>
+            <input type="text" name="phone" id="phone">
+
+        </form>
+        <h2>Wprowadź dane pupila</h2>
+        <form class="form">
+
+            <label for="pet-name">Imię:<sup>*</sup></label>
+            <input type="text" name="pet-name" id="pet-name">
+
+            <label for="species">Gatunek:<sup>*</sup></label>
+            <input type="text" name="species" id="species">
+
+            <label for="breed">Rasa:<sup>*</sup></label>
+            <input type="text" name="breed" id="breed">
+
+            <label for="sex">Płeć:</label>
+            <input type="text" name="sex" id="sex">
+
+            <label for="age">Wiek:</label>
+            <input type="text" name="age" id="age">
+
+            <div class="form-buttons">
+                <input class="form-button-submit" type="submit" value="Zarejestruj" />
+                <a class="form-button-cancel" href="doc.html">Anuluj</a>
+            </div>
+        </form>
+
+
+    </main>
+    <footer>
+        <p> Mariusz Polak - s16449</p>
+    </footer>

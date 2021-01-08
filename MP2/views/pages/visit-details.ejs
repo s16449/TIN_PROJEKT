@@ -1,0 +1,47 @@
+<%- include('.././fragments/headerPatient.ejs') %>
+    <main>
+        <h2>Informacje o wizycie</h2>
+        <form class="form">
+
+            <label for="firstName">Imię:</label>
+            <input type="text" name="firstName" value="Maciej" id="firstName" disabled />
+
+            <label for="lastname">Nazwisko:</label>
+            <input type="text" name="lastname" value="Jasiński" id="lastname" disabled />
+
+
+            <label for="pupil">Pupil:</label>
+            <input type="text" name="pupil" value="Marcel" id="pupil" disabled />
+
+
+
+        </form>
+        <h2>Historia wizyt</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Data wizyty</th>
+                        <th>Cel wizyty</th>
+                        <th>Przyjęty u lekarza</th>
+                        <th>Zalecenia / Informacje</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2019-05-21</td>
+                        <td>Zabieg</td>
+                        <td>Jan Kowalski</td>
+                        <td>Zabieg polegający na skróceniu ząbków. Większych nieprawidłowości nie stwierdzono. Królik
+                            dobrze się czuje. </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="form-buttons">
+            <a href="/patient" class="form-button-back">Powrót</a>
+        </div>
+    </main>
+    <%- include('.././fragments/footer.ejs') %>

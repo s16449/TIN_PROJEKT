@@ -1,0 +1,86 @@
+<%- include('.././fragments/headerPatient.ejs') %>
+    <main>
+        <h2>Informacje o mnie</h2>
+
+
+        <form class="form">
+
+            <label for="firstName">Imię :</label>
+            <input type="text" name="firstName" value="Maciej" id="firstName" disabled />
+
+            <label for="lastname">Nazwisko :</label>
+            <input type="text" name="lastname" value="Jasiński" id="lastname" disabled />
+
+            <label for="email">Email :</label>
+            <input type="email" name="email" value="maciekmaciek@gmail.com" id="email" disabled />
+
+            <label for="email">Telefon :</label>
+            <input type="text" name="phone" value="243-232-232" id="phone" disabled />
+
+            <label for="pets-info">Pupil :</label>
+            <select class="form-select" name="pets-info" id="pets-info">
+                <option value="1">Marcel</option>
+                <option value="2">Figa</option>
+                <option value="3">Milka</option>
+                <option value="4">Fluffy</option>
+                <option value="5">Frodo</option>
+                <option value="6">Rocket</option>
+            </select>
+
+            <div>
+                <a href="/patient-edit" class="list-actions-button-edit">Edytuj</a>
+            </div>
+        </form>
+
+
+
+
+        <h2>Szczegóły Leczenia</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię pupila</th>
+                        <th>Wizyta</th>
+                        <th>Przyjęty u lekarza</th>
+                        <th>Data wizyty</th>
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Marcel</td>
+                        <td>Zabieg</td>
+                        <td>Jan Kowalski</td>
+                        <td>2019-05-21</td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/visit-details" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Figa</td>
+                        <td>Badanie kontrolne</td>
+                        <td>Bartosz Pniewski</td>
+                        <td>2020-10-12</td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/visit-details" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-buttons">
+            <a href="/" class="form-button-back">Powrót</a>
+        </div>
+    </main>
+
+    <%- include('.././fragments/footer.ejs') %>

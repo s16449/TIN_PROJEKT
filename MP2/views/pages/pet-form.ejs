@@ -1,0 +1,48 @@
+<%- include('.././fragments/headerDoctor.ejs') %>
+    <script type="application/javascript" src="../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../js/validationPetForm.js"></script>
+    <main>
+        <h2>eddd</h2>
+        <form class="formRegister" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+
+            
+            <label for="pet-name">Imię:<abbr title="required">*</abbr></label>
+            <input type="text" name="pet-name" id="pet-name" />
+            <span id="errorName" class="errors-text"></span>
+
+            <label for="species">Gatunek:<abbr title="required">*</abbr></label>
+            <input type="text" name="species" id="species" />
+            <span id="errorSpecies" class="errors-text"></span>
+
+            <label for="breed">Rasa:</label>
+            <input type="text" name="breed" id="breed" />
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="sex">Płeć:<abbr title="required">*</abbr></label>
+            <input type="text" name="sex" id="sex" />
+            <span id="errorSex" class="errors-text"></span>
+
+            <label for="age">Wiek:</label>
+            <input type="text" name="age" id="age" />
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="ownerId">Właściciel:<abbr title="required">*</abbr></label>
+            <select class="form-select" name="ownerId" id="ownerId">
+                <option value="1">Marcel</option>
+                <option value="2">Figa</option>
+                <option value="3">Milka</option>
+                <option value="4">Fluffy</option>
+                <option value="5">Frodo</option>
+                <option value="6">Rocket</option>
+            </select>
+            <span id="errorOwnerId" class="errors-text"></span>
+
+            <div class="form-buttons-register">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input class="form-button-submit" type="submit" value="Zarejestruj" />
+                <a class="form-button-cancel" href="/doc">Anuluj</a>
+            </div>
+        </form>
+
+    </main>
+    <%- include('.././fragments/footer.ejs') %>

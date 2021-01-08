@@ -1,0 +1,81 @@
+<%- include('.././fragments/header.ejs') %>
+    <main>
+        <h2>Specjaliści</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th>Specjalizacja</th>
+                        <th>Akcje</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let docs of doctors) { %>
+                        <tr>
+                            <td>
+                                <%= docs.firstName %>
+                            </td>
+                            <td>
+                                <%= docs.lastName %>
+                            </td>
+                            <td>
+                                <%= docs.email %>
+                            </td>
+                            <td>
+                                <%= docs.specialization %>
+                            </td>
+                            <td>
+                                <ul class="list-actions">
+                                    <li>
+                                        <a href="/doctors/details/<%=docs._id%>"
+                                            class="list-actions-button-details">Szczegóły</a>
+                                </ul>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+
+
+                <!-- <tbody>
+                    <tr>
+                        <td>Jan</td>
+                        <td>Kowalski</td>
+                        <td><a href="mailto:jan.kowalski@lecznicaFrodo.pl">jan.kowalski@lecznicaFrodo.pl</a></td>
+                        <td>Neurologia</td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/doctors/details/2" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Bartosz</td>
+                        <td>Pniewski</td>
+                        <td><a href="mailto:bartosz.pniewski@lecznicaFrodo.pl">bartosz.pniewski@lecznicaFrodo.pl</a>
+                        </td>
+                        <td>Stomatologia</td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/doc-details" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+
+                            </ul>
+                        </td>
+
+                    </tr>
+                </tbody> -->
+            </table>
+        </div>
+
+
+    </main>
+    <%- include('.././fragments/footer.ejs') %>

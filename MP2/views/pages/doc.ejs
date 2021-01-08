@@ -1,0 +1,130 @@
+<%- include('.././fragments/headerDoctor.ejs') %>
+    <main>
+        <!-- <h2>Wyszukiwanie pacjentów</h2>
+
+
+        <form class="form">
+
+            <label for="firstName">Imię właściciela :</label>
+            <input type="text" name="firstName" value="Maciej" id="firstName" />
+
+            <label for="lastname">Nazwisko właściciela:</label>
+            <input type="text" name="lastname" value="Jasiński" id="lastname" />
+
+            <label for="pets">Pupil :</label>
+            <select class="form-select" name="pets" id="pets">
+                <option value="1">Marcel</option>
+                <option value="2">Figa</option>
+                <option value="3">Milka</option>
+                <option value="4">Fluffy</option>
+                <option value="5">Frodo</option>
+                <option value="6">Rocket</option>
+            </select>
+            <div class="form-buttons">
+                <input class="form-button-login" type="submit" value="Pokaż wyniki" />
+            </div>
+        </form> -->
+
+        <h2>Wizyty</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię pupila</th>
+                        <th>Cel wizyty</th>
+                        <th>Data wizyty</th>
+                        <th>Informacje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let doc of vis) { %>
+                        <tr>
+                            <td><%= doc.patients.name %></td>
+                            <td><%= doc.purpose %></td>
+                            <td><%= doc.dateOf.toISOString().split('T')[0]  %></td>
+                            <td>
+                                <ul class="list-actions">
+                                    <li><a href="/doc/details/<%=doc._id%>" class="list-actions-button-details">Szczegóły</a></li>
+                                    <li><a href="/doc/edit/<%=doc._id%>" class="list-actions-button-edit">Edytuj</a></li>
+                                    
+                                </ul>
+                            </td>
+                        </tr>
+                    <% } %>
+
+
+                    <!-- <tr>
+                        <td>Marcel</td>
+                        <td>Zabieg</td>
+                        <td>2019-05-21</td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/visit-details" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/edit-visit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Figa</td>
+                        <td>Badanie kontrolne</td>
+                        <td>2020-10-12</td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/visit-details" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/edit-visit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr> -->
+                </tbody>
+
+            </table>
+        </div>
+        <h2>Pacjenci</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię pupila</th>
+                        <th>Nazwisko właściciela</th>
+                        <th>Numer kontaktowy</th>
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let doc of vis) { %>
+                        <tr>
+                            <td><%= doc.patients.name %></td>
+                            <td><%= doc.patients.owners.lastName %></td>
+                            <td><%= doc.patients.owners.phone %></td>
+                            <td>
+                                <ul class="list-actions">
+                                    <li><a href="/doc/details/<%=doc.patients._id%>" class="list-actions-button-details">Szczegóły</a></li>
+                                    <li><a href="/doc/edit/<%=doc.patients._id%>" class="list-actions-button-edit">Edytuj</a></li>
+                                    <li><a href="/doc/edit/<%=doc.patients._id%>" class="list-actions-button-delete">Usuń</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    <% } %>
+                   
+                </tbody>
+            </table>
+        </div>
+        <p><a href="/register-new-patient" class="button-add">Zarejestruj nowego właściela</a></p>
+        <p><a href="/doc/add" class="button-add">Dodaj pacjenta</a></p>
+        <p><a href="/add-new-visit" class="button-add">Dodaj nową wizytę</a></p>
+
+        <div class="form-buttons">
+            <a href="/" class="form-button-back">Powrót</a>
+
+        </div>
+    </main>
+    <%- include('.././fragments/footer.ejs') %>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+
+    <title>Lecznica dla zwierząt "FRODO"</title>
+</head>
+
+<body>
+    <header>
+        <img src="images/vetLogo.png" alt="Lecznica Frodo">
+        <h1>Lecznica dla zwierząt "FRODO"</h1>
+        <img src="images/ferdi340.png" alt="Lecznica Frodo">
+        <img src="images/vetLogo.png" alt="Lecznica Frodo">
+    </header>
+
+
+    <nav>
+        <ul class="">
+            <li> <a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>">Strona główna</a></li>
+            <li><a href="/doctors" class="<%= navLocation == 'docs' ? 'active' : ''%>"> Nasi Specjaliści</a></li>
+            <li><a href="/range" class="<%= navLocation == 'range' ? 'active' : ''%>">Zakres usług </a></li>
+            <li><a href="/pet-photos"class="<%= navLocation == 'petPhotos' ? 'active' : ''%>">Nasi Pacjenci - Galeria</a></li>
+            <li><a href="/contact"class="<%= navLocation == 'contact' ? 'active' : ''%>">Kontakt</a></li>
+
+
+        </ul>
+        <ul class="">
+            <li>
+
+                <a href="/login" class="<%= navLocation == 'login' ? 'active' : ''%>">Logowanie</a>
+            </li>
+        </ul>
+
+
+    </nav>

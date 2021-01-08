@@ -1,0 +1,41 @@
+<%- include('.././fragments/headerDoctor.ejs') %>
+<script type="application/javascript" src="../js/validationCommon.js"></script>
+<script type="application/javascript" src="../js/validationCustomerForm.js"></script>
+    <main>
+        <h2>Rejestracja właściciela</h2>
+        <form class="formRegister" novalidate onsubmit="return validateForm();">
+
+            <label for="firstName">Imię:<abbr title="required">*</abbr></label>
+            <input type="text" name="firstName" id="firstName" placeholder="2-60 znaków" />
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="lastName">Nazwisko:<abbr title="required">*</abbr></label>
+            <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków" />
+            <span id="errorLastName" class="errors-text"></span>
+
+            <label for="email">Email:<abbr title="required">*</abbr></label>
+            <input type="email" name="email" id="email" placeholder="musi zawierać @" />
+            <span id="errorEmail" class="errors-text"></span>
+
+            <label for="login">Nadany login:<abbr title="required">*</abbr></label>
+            <input type="text" name="login" id="login" placeholder="2-60 znaków" />
+            <span id="errorLogin" class="errors-text"></span>
+
+            <label for="password">Tymczasowe hasło:<abbr title="required">*</abbr></label>
+            <input type="text" name="password" id="password" placeholder="2-60 znaków" />
+            <span id="errorPassword" class="errors-text"></span>
+
+            <label for="phone">Telefon kontaktowy:<abbr title="required">*</abbr></label>
+            <input type="text" name="phone" id="phone" placeholder="tylko cyfry" />
+            <span id="errorPhone" class="errors-text"></span>
+
+            <div class="form-buttons-register">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input class="form-button-submit" type="submit" value="Zarejestruj" />
+                <a class="form-button-cancel" href="/doc">Anuluj</a>
+            </div>
+        </form>
+       
+
+    </main>
+    <%- include('.././fragments/footer.ejs') %>

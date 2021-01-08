@@ -1,0 +1,29 @@
+<%- include('.././fragments/header.ejs') %>
+    <main>
+        <h2>Szczegóły lekarza</h2>
+        <form class="form">
+
+            <label for="firstName">Imię:</label>
+            <input type="text" name="firstName" value="Jan" id="firstName" disabled />
+
+            <label for="lastname">Nazwisko: Kowalski</label>
+            <input type="text" name="lastname" value="Kowalski" id="lastname" disabled />
+
+
+            <label for="specialization">Specjalizacja: Neurologia</label>
+            <input type="text" name="specialization" value="Neurologia" id="specialization" disabled />
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="jan.kowalski@lecznicaFrodo.pl" id="email" disabled />
+
+
+
+        </form>
+        <h2>O lekarzu : </h2>
+        <img class="scale-pics" src="../images/logo.png" alt="Lecznica Frodo">
+        <div class="form-buttons">
+            <a href="/doctors" class="form-button-back">Powrót</a>
+        </div>
+        
+    </main>
+    <%- include('.././fragments/footer.ejs') %>

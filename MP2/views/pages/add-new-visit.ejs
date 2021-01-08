@@ -1,0 +1,52 @@
+<%- include('.././fragments/headerDoctor.ejs') %>
+<script type="application/javascript" src="../js/validationCommon.js"></script>
+<script type="application/javascript" src="../js/validationNewVisit.js"></script>
+    <main>
+        <h2>Dodaj nową wizytę</h2>
+        <form class="formRegister" novalidate onsubmit="return validateForm();">
+
+            <label for="firstName">Imię :<abbr title="required">*</abbr></label>
+            <input type="text" name="firstName" id="firstName">
+            <span id="errorFirstName" class="errors-text"></span>
+            
+
+            <label for="lastName">Nazwisko :<abbr title="required">*</abbr></label>
+            <input type="text" name="lastName" id="lastName">
+            <span id="errorLastName" class="errors-text"></span>
+
+            <label for="pets">Pupil :</label>
+            <select class="form-select" name="pets" id="pets">
+                <option value="1">Marcel</option>
+                <option value="2">Figa</option>
+                <option value="3">Milka</option>
+                <option value="4">Fluffy</option>
+                <option value="5">Frodo</option>
+                <option value="6">Rocket</option>
+            </select>
+            <span id="errorLastName" class="errors-text"></span>
+
+            <label for="visitDate">Data wizyty: <abbr title="required">*</abbr></label>
+            <input type="date" name="visitDate" id="visitDate" />
+            <span id="errorVisitDate" class="errors-text"></span>
+
+            <label for="visit-purpose">Cel wizyty :</label>
+            <select class="form-select" name="visit-purpose" id="visit-purpose">
+                <option value="1">Konsultacja</option>
+                <option value="2">Zabieg</option>
+                <option value="3">Stomatologia</option>
+                <option value="4">Badanie kontrolne</option>
+            </select>
+            <span id="errorLastName" class="errors-text"></span>
+
+            <label for="textarea">Opis wizyty i zalecenia: <abbr title="required">*</abbr></label>
+            <textarea class="textarea" name="textarea" id="textarea" rows="20" cols="50"></textarea>
+            <span id="errorTextArea" class="errors-text"></span>
+
+            <div class="form-buttons-register">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input class="form-button-submit" type="submit" value="Zapisz wizytę" />
+                <a class="form-button-cancel" href="/doc">Anuluj</a>
+            </div>
+        </form>
+    </main>
+    <%- include('.././fragments/footer.ejs') %>

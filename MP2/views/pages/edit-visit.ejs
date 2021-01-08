@@ -1,0 +1,48 @@
+<%- include('.././fragments/headerDoctor.ejs') %>
+    <main>
+        <h2>Edytuj wizytę</h2>
+        <form class="form">
+
+            <label for="firstName">Imię :</label>
+            <input type="text" value="Maciej" name="firstName" id="firstName" disabled />
+
+            <label for="lastname">Nazwisko :</label>
+            <input type="text" value="Jasiński" name="lastname" id="lastname" disabled />
+
+            <label for="choice-pet">Pupil :</label>
+            <select class="form-select" name="choice-pet" id="choice-pet">
+                <option value="1">Marcel</option>
+                <option value="2">Figa</option>
+                <option value="3">Milka</option>
+                <option value="4">Fluffy</option>
+                <option value="5">Frodo</option>
+                <option value="6">Rocket</option>
+            </select>
+
+            <label for="visitDate">Data wizyty: </label>
+            <input type="date" name="visitDate" id="visitDate" disabled />
+
+            <label for="choice-visit">Cel wizyty :</label>
+            <select class="form-select" name="choice-visit" id="choice-visit">
+                <option value="1">Konsultacja</option>
+                <option value="2">Zabieg</option>
+                <option value="3">Stomatologia</option>
+                <option value="4">Badanie kontrolne</option>
+            </select>
+
+
+
+
+            <label for="textfield">Opis wizyty i zalecenia:</label>
+
+            <textarea class="textarea" name="textfield" id="textfield" rows="20" cols="50"></textarea>
+
+
+
+            <div class="form-buttons">
+                <input class="form-button-submit" type="submit" value="Zapisz edycję wizyty" />
+                <a class="form-button-cancel" href="/doc">Anuluj</a>
+            </div>
+        </form>
+    </main>
+    <%- include('.././fragments/footer.ejs') %>

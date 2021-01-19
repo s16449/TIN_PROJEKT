@@ -9,6 +9,17 @@ var doctorsRouter = require('./routes/doctorsRoute');
 var patientsRouter = require('./routes/patientsRoute');
 var visitsRouter = require('./routes/visitsRoute');
 
+const sequelizeInit = require('./config/sequelize/init');
+sequelizeInit()
+  .catch(err => {
+    console.log(err);
+  });
+
+const docApiRouter = require('./routes/api/DoctorApiRoute');
+const patApiRouter = require('./routes/api/PatientApiRoute');
+const visApiRouter = require('./routes/api/VisitApiRoute');
+
+
 
 var app = express();
 
@@ -24,17 +35,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/doctors', doctorsRouter);
-app.use('/patients' , patientsRouter);
+app.use('/patients', patientsRouter);
 app.use('/visits', visitsRouter);
 
+app.use('/api/doctors', docApiRouter);
+app.use('/api/patients', patApiRouter);
+app.use('/api/visits', visApiRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

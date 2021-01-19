@@ -1,0 +1,54 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <script type="application/javascript" src="../../js/validationCommon.js"></script>
+        <script type="application/javascript" src="../../js/validationPatientForm.js"></script>
+        <h2>Wprowadź dane pacjenta</h2>
+        <form class="formRegister" novalidate onsubmit="return validateForm();">
+
+            <label for="petName">Imię pacjenta:<abbr title="required">*</abbr></label>
+            <input type="text" name="petName" id="petName" placeholder="2-60 znaków" />
+            <span id="errorPetName" class="errors-text"></span>
+
+            <label for="species">Gatunek:<abbr title="required">*</abbr></label>
+            <input type="text" name="species" id="species" placeholder="2-60 znaków" />
+            <span id="errorSpecies" class="errors-text"></span>
+
+            <label for="breed">Rasa:</label>
+            <input type="text" name="breed" id="breed">
+            <span></span>
+
+            <label for="sex">Płeć:<abbr title="required">*</abbr></label>
+            <input type="text" name="sex" id="sex" placeholder="2-60 znaków">
+            <span id="errorSex" class="errors-text"></span>
+
+            <label for="age">Wiek:<abbr title="required">*</abbr></label>
+            <input type="text" name="age" id="age" placeholder="można podać tekstowo / 2-60 znaków">
+            <span id="errorAge" class="errors-text"></span>
+
+
+            <label for="lastName">Nazwisko właściciela:<abbr title="required">*</abbr></label>
+            <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków" />
+            <span id="errorLastName" class="errors-text"></span>
+
+            <label for="firstName">Imię właściciela:<abbr title="required">*</abbr></label>
+            <input type="text" name="firstName" id="firstName" placeholder="2-60 znaków" />
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+            <span></span>
+
+            <label for="phone">Telefon :<abbr title="required">*</abbr></label>
+            <input type="text" name="phone" id="phone">
+            <span id="errorPhone" class="errors-text"></span>
+
+            <div class="form-buttons-register">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input class="form-button-submit" type="submit" value="Zarejestruj" />
+                <a class="form-button-cancel" href="/patients">Anuluj</a>
+            </div>
+        </form>
+
+
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

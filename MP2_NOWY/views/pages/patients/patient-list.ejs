@@ -1,0 +1,59 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Pacjenci</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię pupila</th>
+                        <th>Nazwisko wlasciciela</th>
+                        <th>Telefon kontaktowy</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Marcel</td>
+                        <td>Jasinski</td>
+                        <td>46483923</td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/patients/details/:patId" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/patients/add" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Rocket</td>
+                        <td>Jasinski</td>
+                        <td>34345635464</td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/patients/details/:patId" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/patients/add" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><a href="/patients/add" class="button-add">Dodaj nowego pacjenta</a></p>
+
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

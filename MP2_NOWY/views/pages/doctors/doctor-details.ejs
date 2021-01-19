@@ -1,0 +1,82 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Szczegóły lekarza</h2>
+        <form class="form">
+
+            <label for="firstName">Imię:</label>
+            <input type="text" name="firstName" value="Jan" id="firstName" disabled />
+
+            <label for="lastname">Nazwisko: Kowalski</label>
+            <input type="text" name="lastname" value="Kowalski" id="lastname" disabled />
+
+
+            <label for="specialization">Specjalizacja:</label>
+            <input type="text" name="specialization" value="Neurologia" id="specialization" disabled />
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="jan.kowalski@lecznicaFrodo.pl" id="email" disabled />
+            <div>
+                <a href="/doctors/add" class="list-actions-button-edit">Edytuj</a>
+            </div>
+
+
+        </form>
+        <h2>Wizyty lekarza: </h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię pupila</th>
+                        <th>Cel wizyty</th>
+                        <th>Data wizyty</th>
+                        <th>Informacje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Marcel</td>
+                        <td>Zabieg</td>
+                        <td>2019-05-21</td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/doctors/details/:docId" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/doctors/add" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Figa</td>
+                        <td>Badanie kontrolne</td>
+                        <td>2020-10-12</td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/doctors/details/:docId" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/doctors/add" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="form-buttons">
+            <a href="/doctors" class="form-button-back">Powrót</a>
+        </div>
+
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

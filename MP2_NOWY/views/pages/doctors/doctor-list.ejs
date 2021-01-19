@@ -1,0 +1,65 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Specjaliści</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th>Akcje</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jan</td>
+                        <td>Kowalski</td>
+                        <td><a href="mailto:jan.kowalski@lecznicaFrodo.pl">jan.kowalski@lecznicaFrodo.pl</a></td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/doctors/details/:docId" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/doctors/add" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Bartosz</td>
+                        <td>Pniewski</td>
+                        <td><a href="mailto:bartosz.pniewski@lecznicaFrodo.pl">bartosz.pniewski@lecznicaFrodo.pl</a>
+                        </td>
+
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/doctors/details/:docId" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/doctors/add" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+
+                            </ul>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><a href="/doctors/add" class="button-add">Dodaj nowego lekarza</a></p>
+
+
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

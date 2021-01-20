@@ -22,7 +22,7 @@ const Patient = sequelize.define('Patient', {
     },
     breed: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     age: {
         type: Sequelize.STRING,
@@ -40,7 +40,7 @@ const Patient = sequelize.define('Patient', {
 
     email: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: true
     },
     phone: {

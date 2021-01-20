@@ -45,11 +45,11 @@ exports.updatePatient = (patId, patData) => {
     const sex = patData.sex;
     const species = patData.species;
     const breed = patData.breed;
-    const age = petData.age;
-    const ownerFirstName = petData.ownerFirstName;
-    const ownerLastName = petData.ownerLastName;
-    const email = petData.email;
-    const phone = petData.phone;
+    const age = patData.age;
+    const ownerFirstName = patData.ownerFirstName;
+    const ownerLastName = patData.ownerLastName;
+    const email = patData.email;
+    const phone = patData.phone;
     return Patient.update(patData, { where: { _id: patId } });
 };
 

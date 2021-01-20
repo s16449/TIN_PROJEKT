@@ -29,15 +29,7 @@ const Visit = sequelize.define('Visit', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    docLastName: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    ownerPatLastName: {
-        type: Sequelize.STRING,
-        allowNull: true
-    }
-
+ 
 });
 
 module.exports = Visit;

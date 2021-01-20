@@ -39,7 +39,7 @@ exports.updateDoctor = (docId, docData) => {
     const lastName = docData.lastName;
     const email = docData.email;
     const specialization = docData.specialization;
-    return Employee.update(docData, { where: { _id: docId } });
+    return Doctor.update(docData, { where: { _id: docId } });
 };
 
 exports.deleteDoctor = (docId) => {

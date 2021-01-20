@@ -2,58 +2,72 @@
     <main>
         <script type="application/javascript" src="../../js/validationCommon.js"></script>
         <script type="application/javascript" src="../../js/validationVisitForm.js"></script>
-        <h2>Dodaj nową wizytę</h2>
-        <form class="formRegister" novalidate onsubmit="return validateForm();">
+        <h2>
+            <%= pageTitle %>
+        </h2>
+        <form class="formRegister" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
 
-            <label for="petName">Imię pacjenta:<abbr title="required">*</abbr></label>
-            <select class="form-select" name="petName" id="petName">
+            <input type="hidden" name="_id" value="<%= vis._id %>">
+
+            <label for="patientId">Imię pacjenta:<abbr title="required">*</abbr></label>
+            <select class="form-select" name="patientId" id="patientId" required <%=(formMode=='showDetails' )
+                ? 'disabled' : '' %> >
                 <option value="">--- Wybierz pacjenta ---</option>
-                <option value="2">Figa</option>
-                <option value="3">Milka</option>
-                <option value="4">Fluffy</option>
-                <option value="5">Frodo</option>
-                <option value="6">Rocket</option>
+                <% for (let i=0; i<allPats.length; i++) { let pats=allPats[i]; %>
+                    <option value="<%= pats._id %>" label="<%= pats.patName + ' ' + pats.ownerLastName %>" <%=(vis._id
+                        && pats._id.toString()==vis.patients._id.toString()) ? 'selected' : '' %>></option>
+                    <% } %>
             </select>
-            <span id="errorPetName" class="errors-text"></span>
+            <span id="errorPatName" class="errors-text"></span>
 
-            <label for="lastName">Nazwisko właściciela:<abbr title="required">*</abbr></label>
-            <select class="form-select" name="lastName" id="lastName">
-                <option value="">--- Wybierz właściciela ---</option>
-                <option value="2">Jasinski</option>
-            </select>
-            <span id="errorLastName" class="errors-text"></span>
 
-            <label for="doctor">Nazwisko lekarza:<abbr title="required">*</abbr></label>
-            <select class="form-select" name="doctor" id="doctor" required>
+
+            <label for="docId">Nazwisko lekarza:<abbr title="required">*</abbr></label>
+            <select class="form-select" name="docId" id="docId" required <%=(formMode=='showDetails' ) ? 'disabled' : ''
+                %> >
                 <option value="">--- Wybierz lekarza ---</option>
-                <option value="2">Pniewski</option>
-                <option value="3">Kowalski</option>
+                <% for (let i=0; i<allDocs.length; i++) { let docs=allDocs[i]; %>
+                    <option value="<%= docs._id %>" label="<%= docs.firstName + ' ' + docs.lastName %>" <%=(vis._id &&
+                        docs._id.toString()==vis.doctors._id.toString()) ? 'selected' : '' %>></option>
+                    <% } %>
             </select>
             <span id="errorDoctor" class="errors-text"></span>
 
-            <label for="visitDate">Data wizyty: <abbr title="required">*</abbr></label>
-            <input type="date" name="visitDate" id="visitDate" />
+            <label for="dateOf">Data wizyty: <abbr title="required">*</abbr></label>
+            <input type="date" name="dateOf" id="dateOf"
+                value="<%= vis.dateOf ? vis.dateOf.toISOString().split('T')[0] : '' %>" <%=(formMode=='createNew' )
+                ? '' : 'disabled' %> >
             <span id="errorVisitDate" class="errors-text"></span>
 
-            <label for="visitPurpose">Cel wizyty :<abbr title="required">*</abbr></label>
-            <select class="form-select" name="visitPurpose" id="visitPurpose">
-                <option value="">--- Wybierz cel wizyty ---</option>
-                <option value="2">Zabieg</option>
-                <option value="3">Stomatologia</option>
-                <option value="4">Badanie kontrolne</option>
-                <option value="5">Konsultacja</option>
-            </select>
+            <label for="purpose">Cel wizyty :<abbr title="required">*</abbr></label>
+            <input type="text" name="purpose" id="purpose" placeholder="2-60 znaków" value="<%= vis.purpose %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+
             <span id="errorVisitPurpose" class="errors-text"></span>
 
-            <label for="textfield">Opis wizyty i zalecenia:<abbr title="required">*</abbr></label>
-            <textarea class="textarea" name="textarea" id="textarea" rows="20" cols="50"></textarea>
+            <label for="description">Opis wizyty i zalecenia:<abbr title="required">*</abbr></label>
+            <textarea class="textarea" name="description" id="description" rows="20" cols="50" required
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> ><%= vis.description %></textarea>
             <span id="errorTextArea" class="errors-text"></span>
 
-            <div class="form-buttons-register">
-                <p id="errorsSummary" class="errors-text"></p>
-                <input class="form-button-submit" type="submit" value="Zapisz wizytę" />
-                <a class="form-button-cancel" href="/visits">Anuluj</a>
-            </div>
+            <% if (formMode=='showDetails' ) { %>
+                <div class="form-button-submit">
+                    <a href="/visits/edit/<%= vis._id %>" class="button-edit">Edytuj</a>
+                </div>
+                <% } %>
+                    <div class="form-buttons-register">
+                        <p id="errorsSummary" class="errors-text"></p>
+                        <% if (formMode !='showDetails' ) { %>
+                            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                            <a class="form-button-cancel" href="/visits">Anuluj</a>
+                            <% } else { %>
+                                <a class="form-button-cancel" href="/visits">Powrót</a>
+                                <% } %>
+
+                    </div>
+
         </form>
+
+
     </main>
     <%- include('../../fragments/footer.ejs') %>

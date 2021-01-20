@@ -37,30 +37,30 @@ exports.getVisitById = (visitId) => {
     });
 };
 
-exports.createVisit = (data) => {
-    console.log(JSON.stringify(data));
+exports.createVisit = (visData) => {
+    console.log("create" + JSON.stringify(visData));
 
     return Visit.create({
-        docId: data.docId,
-        patientId: data.patientId,
-        dataOf: data.dataOf,
-        purpose: data.purpose,
-        description: data.description,
-        docLastName: data.docLastName,
-        ownerPatLastName: data.ownerPatLastName
+        docId: visData.docId,
+        patientId: visData.patientId,
+        dateOf: visData.dateOf,
+        purpose: visData.purpose,
+        description: visData.description
+       
+        
     });
 };
 
-exports.updateVisit = (visitId, data) => {
+exports.updateVisit = (visId, visData) => {
 
-    const docId = data.docId;
-    const patientId = data.patientId;
-    const dataOf = data.dataOf;
-    const purpose = data.purpose;
-    const description = data.description;
-    const docLastName = data.docLastName;
-    const ownerPatLastName = data.ownerPatLastName;
-    return Visit.update(data, { where: { _id: visitId } });
+    const docId = visData.docId;
+    const patientId = visData.patientId;
+    const dateOf = visData.dateOf;
+    const purpose = visData.purpose;
+    const description = visData.description;
+   
+   
+    return Visit.update(visData, { where: { _id: visId } });
 }
 
 exports.deleteVisit = (visitId) => {

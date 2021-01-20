@@ -1,14 +1,14 @@
 function validateForm() {
 
-    const petNameInput = document.getElementById('petName');
-    const firstNameInput = document.getElementById('firstName');
-    const lastNameInput = document.getElementById('lastName');
+    const patNameInput = document.getElementById('patName');
+    const firstNameInput = document.getElementById('ownerFirstName');
+    const lastNameInput = document.getElementById('ownerLastName');
     const speciesInput = document.getElementById('species');
     const sexInput = document.getElementById('sex');
     const ageInput = document.getElementById('age');
     const phoneInput = document.getElementById('phone');
 
-    const errorPetName = document.getElementById('errorPetName');
+    const errorPatName = document.getElementById('errorPatName');
     const errorFirstName = document.getElementById('errorFirstName');
     const errorLastName = document.getElementById('errorLastName');
     const errorSpecies = document.getElementById('errorSpecies');
@@ -18,7 +18,7 @@ function validateForm() {
 
     const errorsSummary = document.getElementById('errorsSummary');
 
-    resetErrors([firstNameInput, lastNameInput, petNameInput, speciesInput, sexInput, ageInput, phoneInput], [errorFirstName, errorLastName, errorPetName, errorSpecies, errorSex, errorAge, errorPhone], errorsSummary);
+    resetErrors([firstNameInput, lastNameInput, patNameInput, speciesInput, sexInput, ageInput, phoneInput], [errorFirstName, errorLastName, errorPatName, errorSpecies, errorSex, errorAge, errorPhone], errorsSummary);
     let valid = true;
 
     if (!checkRequired(firstNameInput.value)) {
@@ -43,14 +43,14 @@ function validateForm() {
     }
 
 
-    if (!checkRequired(petNameInput.value)) {
+    if (!checkRequired(patNameInput.value)) {
         valid = false;
-        petNameInput.classList.add("error-input");
-        errorPetName.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(petNameInput.value, 2, 60)) {
+        patNameInput.classList.add("error-input");
+        errorPatName.innerText = "Pole jest wymagane";
+    } else if (!checkTextLengthRange(patNameInput.value, 2, 60)) {
         valid = false;
-        petNameInput.classList.add("error-input");
-        errorPetName.innerText = "Pole powinno zawierać od 2 do 60 znaków";
+        patNameInput.classList.add("error-input");
+        errorPatName.innerText = "Pole powinno zawierać od 2 do 60 znaków";
     } 
 
     if (!checkRequired(speciesInput.value)) {

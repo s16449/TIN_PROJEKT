@@ -40,8 +40,9 @@ module.exports = () => {
         .then(patients => {
             if (!patients || patients.length == 0) {
                 return Patient.bulkCreate([
-                    { patName: 'Figa', sex: 'Female', species: 'bunny', breed: 'mini', age: '1 year', ownerFirstName: 'Stanislaw', ownerLastName: 'Wach', email: 'staszek@wp.pl', phone: '223343212' },
-                    { patName: 'Marcel', sex: 'Male', species: 'bunny', breed: 'mini', age: '8 months', ownerFirstName: 'Pawel', ownerLastName: 'Mezynski', email: 'pawel.mezynski@gmail.com', phone: '3232524352' }
+                    { patName: 'Figa', sex: 'samiczka', species: 'Królik', breed: 'Miniaturka', age: '2 lata', ownerFirstName: 'Stanislaw', ownerLastName: 'Wach', email: 'staszek@wp.pl', phone: '223343212' },
+                    { patName: 'Marcel', sex: 'samiec', species: 'Królik', breed: 'Miniaturka', age: '8 miesięcy', ownerFirstName: 'Pawel', ownerLastName: 'Mezynski', email: 'pawel.mezynski@gmail.com', phone: '3232524352' },
+                    { patName: 'Rocket', sex: 'samiec', species: 'Pies', breed: 'Kundelek', age: '5 miesięcy', ownerFirstName: 'Daniel', ownerLastName: 'Pniewa', email: 'danielo@gmail.com', phone: '323356334223' }
                 ])
                     .then(() => {
                         return Doctor.findAll();
@@ -57,9 +58,9 @@ module.exports = () => {
         .then(vists => {
             if (!vists || vists.length == 0) {
                 return Visit.bulkCreate([
-                    { docId: allDocs[0]._id, patientId: allPatients[0]._id, docLastName: allDocs[0].lastName, ownerPatLastName: allPatients[0].patName, dateOf: '2020-01-01', purpose: 'kontrolna wizyta', description: 'Kontrolna wizyta po badaniu' },
-                    { docId: allDocs[1]._id, patientId: allPatients[0]._id, docLastName: allDocs[1].lastName, ownerPatLastName: 'asaaaaa', dateOf: '2020-09-01', purpose: 'Szczepienie', description: 'Szczepienie na ' },
-                    { docId: allDocs[0]._id, patientId: allPatients[1]._id, docLastName: allDocs[0].lastName, ownerPatLastName: 'asdasd', dateOf: '2020-11-01', purpose: 'kontrolna wizyta', description: 'Kontrolna wizyta po badaniu' }
+                    { docId: allDocs[0]._id, patientId: allPatients[0]._id,  dateOf: '2020-01-01', purpose: 'kontrolna wizyta', description: 'Kontrolna wizyta po badaniu' },
+                    { docId: allDocs[1]._id, patientId: allPatients[0]._id,  dateOf: '2020-09-01', purpose: 'Szczepienie', description: 'Szczepienie na ' },
+                    { docId: allDocs[0]._id, patientId: allPatients[1]._id, dateOf: '2020-11-01', purpose: 'kontrolna wizyta', description: 'Kontrolna wizyta po badaniu' }
                 ]);
             } else {
                 return vists;

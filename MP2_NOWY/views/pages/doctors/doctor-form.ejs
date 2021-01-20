@@ -2,33 +2,88 @@
     <main>
         <script type="application/javascript" src="../../js/validationCommon.js"></script>
         <script type="application/javascript" src="../../js/validationDoctorForm.js"></script>
-        <h2>Dodaj lekarza</h2>
-        <form class="formRegister" novalidate onsubmit="return validateForm();">
+        <h2>
+            <%= pageTitle %>
+        </h2>
+        <form class="formRegister" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+            <input type="hidden" name="_id" value="<%= doc._id %>">
+
+
 
             <label for="firstName">Imię:<abbr title="required">*</abbr></label>
-            <input type="text" name="firstName" id="firstName" placeholder="2-60 znaków" />
+            <input type="text" name="firstName" id="firstName" placeholder="2-60 znaków" value="<%= doc.firstName %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
             <span id="errorFirstName" class="errors-text"></span>
 
             <label for="lastName">Nazwisko:<abbr title="required">*</abbr></label>
-            <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków" />
+            <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków" value="<%= doc.lastName %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
             <span id="errorLastName" class="errors-text"></span>
 
 
             <label for="specialization">Specjalizacja :<abbr title="required">*</abbr></label>
-            <input type="text" name="specialization" id="specialization" placeholder="2-60 znaków" />
+            <input type="text" name="specialization" id="specialization" placeholder="2-60 znaków"
+                value="<%= doc.specialization %>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
             <span id="errorSpecialization" class="errors-text"></span>
 
             <label for="email">Email:<abbr title="required">*</abbr></label>
-            <input type="email" name="email" id="email" placeholder="musi zawierać @" />
+            <input type="email" name="email" id="email" placeholder="musi zawierać @" value="<%= doc.email %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
             <span id="errorEmail" class="errors-text"></span>
 
-            <div class="form-buttons-register">
-                <p id="errorsSummary" class="errors-text"></p>
-                <input class="form-button-submit" type="submit" value="Zarejestruj" />
-                <a class="form-button-cancel" href="/doctors">Anuluj</a>
-            </div>
+            <% if (formMode=='showDetails' ) { %>
+                <div class="form-button-submit">
+                    <a href="/doctors/edit/<%= doc._id %>" class="button-edit">Edytuj</a>
+                </div>
+                <% } %>
+
+                    <div class="form-buttons-register">
+                        <p id="errorsSummary" class="errors-text"></p>
+                        <% if (formMode !='showDetails' ) { %>
+                            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                            <a class="form-button-cancel" href="/doctors">Anuluj</a>
+                            <% } else { %>
+                                <a class="form-button-cancel" href="/doctors">Powrót</a>
+                                <% } %>
+
+                    </div>
         </form>
 
+        <% if (formMode=='showDetails' || formMode=='edit' ) { %>
+            <h2>Wizyty lekarza: </h2>
+            <div class="scale-table">
+                <table class="table-list">
+                    <thead>
+                        <tr>
+                            <th>Imię pacjenta</th>
+                            <th>Gatunek</th>
+                            <th>Cel wizyty</th>
+                            <th>Data wizyty</th>
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let d of doc.visits) { %>
+                            <tr>
+                                <td><a href="/patients/details/<%= d.patients._id %>">
+                                        <%= d.patients.patName %>
+                                    </a></td>
+                                <td>
+                                    <%= d.patients.species %>
+                                </td>
+                                <td>
+                                    <%= d.purpose %>
+                                </td>
+                                <td>
+                                    <%= d.dateOf.toISOString().split('T')[0] %>
+                                </td>
+
+                            </tr>
+                            <% } %>
+                    </tbody>
+
+                </table>
+            </div>
+            <% } %>
     </main>
     <%- include('../../fragments/footer.ejs') %>

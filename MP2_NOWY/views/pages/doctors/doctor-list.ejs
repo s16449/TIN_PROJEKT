@@ -13,48 +13,27 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% for (let doc of docs) { %>
                     <tr>
-                        <td>Jan</td>
-                        <td>Kowalski</td>
-                        <td><a href="mailto:jan.kowalski@lecznicaFrodo.pl">jan.kowalski@lecznicaFrodo.pl</a></td>
+                        <td><%= doc.firstName %></td>
+                        <td><%= doc.lastName %></td>
+                        <td><a href="mailto:jan.kowalski@lecznicaFrodo.pl"><%= doc.email %></a></td>
                         <td>
                             <ul class="list-actions">
                                 <li>
-                                    <a href="/doctors/details/:docId" class="list-actions-button-details">Szczegóły</a>
+                                    <a href="/doctors/details/<%=doc._id%>" class="list-actions-button-details">Szczegóły</a>
                                 </li>
                                 <li>
-                                    <a href="/doctors/add" class="list-actions-button-edit">Edytuj</a>
+                                    <a href="/doctors/edit/<%=doc._id%>" class="list-actions-button-edit">Edytuj</a>
                                 </li>
                                 <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                    <a href="/doctors/delete/<%=doc._id%>" class="list-actions-button-delete">Usuń</a>
                                 </li>
 
                             </ul>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td>Bartosz</td>
-                        <td>Pniewski</td>
-                        <td><a href="mailto:bartosz.pniewski@lecznicaFrodo.pl">bartosz.pniewski@lecznicaFrodo.pl</a>
-                        </td>
-
-                        <td>
-                            <ul class="list-actions">
-                                <li>
-                                    <a href="/doctors/details/:docId" class="list-actions-button-details">Szczegóły</a>
-                                </li>
-                                <li>
-                                    <a href="/doctors/add" class="list-actions-button-edit">Edytuj</a>
-                                </li>
-                                <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
-                                </li>
-
-                            </ul>
-                        </td>
-
-                    </tr>
+                    <% } %>
                 </tbody>
             </table>
         </div>

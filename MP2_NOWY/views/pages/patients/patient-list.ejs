@@ -5,51 +5,35 @@
             <table class="table-list">
                 <thead>
                     <tr>
-                        <th>Imię pupila</th>
-                        <th>Nazwisko wlasciciela</th>
+                        <th>Imię pacjenta</th>
+                        <th>Gatunek</th>
+                        <th>Nazwisko właściciela</th>
                         <th>Telefon kontaktowy</th>
-                     
+                        <th>Akcje</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <% for (let pat of pats) { %>
                     <tr>
-                        <td>Marcel</td>
-                        <td>Jasinski</td>
-                        <td>46483923</td>
+                        <td><%= pat.patName %></td>
+                        <td><%= pat.species %></td>
+                        <td><%= pat.ownerLastName %></td>
+                        <td><%= pat.phone %></td>
                         <td>
                             <ul class="list-actions">
                                 <li>
-                                    <a href="/patients/details/:patId" class="list-actions-button-details">Szczegóły</a>
+                                    <a href="/patients/details/<%=pat._id%>" class="list-actions-button-details">Szczegóły</a>
                                 </li>
                                 <li>
-                                    <a href="/patients/add" class="list-actions-button-edit">Edytuj</a>
+                                    <a href="/patients/edit/<%=pat._id%>" class="list-actions-button-edit">Edytuj</a>
                                 </li>
                                 <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                    <a href="/patients/delete/<%=pat._id%>" class="list-actions-button-delete">Usuń</a>
                                 </li>
                             </ul>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td>Rocket</td>
-                        <td>Jasinski</td>
-                        <td>34345635464</td>
-                        <td>
-                            <ul class="list-actions">
-                                <li>
-                                    <a href="/patients/details/:patId" class="list-actions-button-details">Szczegóły</a>
-                                </li>
-                                <li>
-                                    <a href="/patients/add" class="list-actions-button-edit">Edytuj</a>
-                                </li>
-                                <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
-                                </li>
-                            </ul>
-                        </td>
-
-                    </tr>
+                    <% } %>
                 </tbody>
             </table>
         </div>

@@ -1,22 +1,22 @@
 function validateForm() {
 
-    const petNameInput = document.getElementById('petName');
-    const doctorInput = document.getElementById('doctor');
-    const lastNameInput = document.getElementById('lastName');
-    const visitDateInput = document.getElementById('visitDate');
-    const textAreaInput = document.getElementById('textarea');
-    const visitPurposeInput = document.getElementById('visitPurpose');
+    const petNameInput = document.getElementById('patientId');
+    const doctorInput = document.getElementById('docId');
+    
+    const visitDateInput = document.getElementById('dateOf');
+    const textAreaInput = document.getElementById('description');
+    const visitPurposeInput = document.getElementById('purpose');
 
-    const errorPetName = document.getElementById('errorPetName');
+    const errorPetName = document.getElementById('errorPatName');
     const errorDoctor = document.getElementById('errorDoctor');
-    const errorLastName = document.getElementById('errorLastName');
+
     const errorVisitDate = document.getElementById('errorVisitDate');
     const errorVisitPurpose = document.getElementById('errorVisitPurpose');
     const errorTextArea = document.getElementById('errorTextArea');
 
     const errorsSummary = document.getElementById('errorsSummary');
 
-    resetErrors([petNameInput, lastNameInput, visitDateInput, doctorInput, visitPurposeInput, textAreaInput], [errorPetName, errorLastName, errorVisitDate, errorDoctor, errorVisitPurpose, errorTextArea], errorsSummary);
+    resetErrors([petNameInput,  visitDateInput, doctorInput, visitPurposeInput, textAreaInput], [errorPetName,  errorVisitDate, errorDoctor, errorVisitPurpose, errorTextArea], errorsSummary);
     let valid = true;
 
     if (!checkRequired(petNameInput.value)) {
@@ -31,15 +31,11 @@ function validateForm() {
         errorDoctor.innerText = "Pole jest wymagane";
     } 
 
-    if (!checkRequired(lastNameInput.value)) {
-        valid = false;
-        lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole jest wymagane";
-    } 
+ 
 
     let nowDate = new Date(),
         month = '' + (nowDate.getMonth() + 1),
-        day = '' + nowDate.getDate(),
+        day = '' + nowDate.getDate() -1,
         year = nowDate.getFullYear();
     if (month.length < 2)
         month = '0' + month;
@@ -64,7 +60,11 @@ function validateForm() {
         valid = false;
         visitPurposeInput.classList.add("error-input");
         errorVisitPurpose.innerText = "Pole jest wymagane";
-    } 
+    } else if (!checkTextLengthRange(visitPurposeInput.value, 2, 60)) {
+        valid = false;
+        visitPurposeInput.classList.add("error-input");
+        errorVisitPurpose.innerText = "Pole powinno zawierać od 2 do 60 znaków";
+    }
 
     if (!checkRequired(textAreaInput.value)) {
         valid = false;

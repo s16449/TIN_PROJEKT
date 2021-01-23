@@ -11,14 +11,24 @@
 
 
             <label for="patName">Imię pacjenta:<abbr title="required">*</abbr></label>
-            <input type="text" name="patName" id="patName" placeholder="2-60 znaków" value="<%= pat.patName%>"
+            <input class="<%= validationErrors.find(e => e.path.includes('patName')) ? 'error-input' : '' %>"
+            type="text" name="patName" id="patName" placeholder="2-60 znaków" value="<%= pat.patName%>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-            <span id="errorPatName" class="errors-text"></span>
+            <span id="errorPatName" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('patName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('patName')).message %>
+                        <% } %>
+            </span>
 
             <label for="species">Gatunek:<abbr title="required">*</abbr></label>
-            <input type="text" name="species" id="species" placeholder="2-60 znaków" value="<%= pat.species%>"
+            <input class="<%= validationErrors.find(e => e.path.includes('species')) ? 'error-input' : '' %>"
+            type="text" name="species" id="species" placeholder="2-60 znaków" value="<%= pat.species%>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-            <span id="errorSpecies" class="errors-text"></span>
+            <span id="errorSpecies" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('species'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('species')).message %>
+                        <% } %>
+            </span>
 
             <label for="breed">Rasa:</label>
             <input type="text" name="breed" id="breed" value="<%= pat.breed%>" <%=(formMode=='showDetails' )
@@ -26,25 +36,45 @@
             <span></span>
 
             <label for="sex">Płeć:<abbr title="required">*</abbr></label>
-            <input type="text" name="sex" id="sex" placeholder="2-60 znaków" value="<%= pat.sex%>"
+            <input class="<%= validationErrors.find(e => e.path.includes('sex')) ? 'error-input' : '' %>"
+            type="text" name="sex" id="sex" placeholder="2-60 znaków" value="<%= pat.sex%>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-            <span id="errorSex" class="errors-text"></span>
+            <span id="errorSex" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('sex'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('sex')).message %>
+                        <% } %>
+            </span>
 
             <label for="age">Wiek:<abbr title="required">*</abbr></label>
-            <input type="text" name="age" id="age" placeholder="można podać tekstowo / 2-60 znaków"
+            <input class="<%= validationErrors.find(e => e.path.includes('age')) ? 'error-input' : '' %>"
+             type="text" name="age" id="age" placeholder="można podać tekstowo / 2-60 znaków"
                 value="<%= pat.age%>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-            <span id="errorAge" class="errors-text"></span>
+            <span id="errorAge" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('age'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('age')).message %>
+                        <% } %>
+            </span>
 
 
             <label for="ownerLastName">Nazwisko właściciela:<abbr title="required">*</abbr></label>
-            <input type="text" name="ownerLastName" id="ownerLastName" placeholder="2-60 znaków"
+            <input class="<%= validationErrors.find(e => e.path.includes('ownerLastName')) ? 'error-input' : '' %>"
+            type="text" name="ownerLastName" id="ownerLastName" placeholder="2-60 znaków"
                 value="<%= pat.ownerLastName%>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-            <span id="errorLastName" class="errors-text"></span>
+            <span id="errorLastName" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('ownerLastName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('ownerLastName')).message %>
+                        <% } %>
+            </span>
 
             <label for="ownerFirstName">Imię właściciela:<abbr title="required">*</abbr></label>
-            <input type="text" name="ownerFirstName" id="ownerFirstName" placeholder="2-60 znaków"
+            <input class="<%= validationErrors.find(e => e.path.includes('ownerFirstName')) ? 'error-input' : '' %>"
+             type="text" name="ownerFirstName" id="ownerFirstName" placeholder="2-60 znaków"
                 value="<%= pat.ownerFirstName%>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-            <span id="errorFirstName" class="errors-text"></span>
+            <span id="errorFirstName" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('ownerFirstName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('ownerFirstName')).message %>
+                        <% } %>
+            </span>
 
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" value="<%= pat.email %>" <%=(formMode=='showDetails' )
@@ -52,9 +82,14 @@
             <span></span>
 
             <label for="phone">Telefon :<abbr title="required">*</abbr></label>
-            <input type="text" name="phone" id="phone" value="<%= pat.phone %>" <%=(formMode=='showDetails' )
+            <input class="<%= validationErrors.find(e => e.path.includes('phone')) ? 'error-input' : '' %>"
+            type="text" name="phone" id="phone" value="<%= pat.phone %>" <%=(formMode=='showDetails' )
                 ? 'disabled' : '' %> />
-            <span id="errorPhone" class="errors-text"></span>
+            <span id="errorPhone" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('phone'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('phone')).message %>
+                        <% } %>
+            </span>
 
             <% if (formMode=='showDetails' ) { %>
                 <div class="form-button-submit">

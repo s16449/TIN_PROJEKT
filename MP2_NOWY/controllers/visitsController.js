@@ -33,7 +33,8 @@ exports.showAddVisitForm = (req, res, next) => {
                 formMode: 'createNew',
                 btnLabel: 'Dodaj wizytę',
                 formAction: '/visits/add',
-                navLocation: 'vis'
+                navLocation: 'vis',
+                validationErrors: []
             });
         });
 
@@ -67,7 +68,8 @@ exports.showEditVisitForm = (req, res, next) => {
                 pageTitle: 'Edycja wizyty',
                 btnLabel: 'Edytuj wizyte',
                 formAction: '/visits/edit',
-                navLocation: 'vis'
+                navLocation: 'vis',
+                validationErrors: []
 
             });
 
@@ -102,17 +104,45 @@ exports.showVisitDetails = (req, res, next) => {
                 formMode: 'showDetails',
                 pageTitle: 'Szczegóły wizyty',
                 formAction: '/visits/edit',
-                navLocation: 'vis'
+                navLocation: 'vis',
+                validationErrors: []
             });
         });
 }
 
 exports.addVisit = (req, res, next) => {
-    const visData = {...req.body };
+    const visData = { ...req.body };
     console.log(visData);
+    let allDocs, allPats
     visitsRepository.createVisit(visData)
         .then(result => {
             res.redirect('/visits');
+        }).catch(err => {
+            doctorsRepository.getDoctors()
+                .then(docs => {
+                    allDocs = docs;
+                    return patientsRepository.getPatients();
+
+                })
+                .then(pats => {
+                    allPats = pats;
+                })
+                .then(() => {
+                    res.render('pages/visits/visit-form', {
+                        vis: visData,
+                        allPats: allPats,
+                        allDocs: allDocs,
+                        formMode: 'createNew',
+                        pageTitle: 'Dodawanie wizyty',
+                        formAction: '/visits/add',
+                        btnLabel: 'Dodaj wizyte',
+                        navLocation: 'vis',
+                        validationErrors: err.errors
+                    });
+
+
+
+                })
         })
 }
 

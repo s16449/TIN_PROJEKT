@@ -19,7 +19,8 @@ exports.showPatientForm = (req, res, next) => {
         formMode: 'createNew',
         btnLabel: 'Dodaj pacjenta',
         formAction: '/patients/add',
-        navLocation: "pat"
+        navLocation: "pat",
+        validationErrors: []
     });
 }
 
@@ -33,7 +34,8 @@ exports.showEditPatientForm = (req, res, next) => {
                 formMode: 'edit',
                 btnLabel: 'Edytuj pacjenta',
                 formAction: '/patients/edit',
-                navLocation: "pat"
+                navLocation: "pat",
+                validationErrors: []
             });
         });
 }
@@ -49,7 +51,8 @@ exports.showPatientDetails = (req, res, next) => {
                 pageTitle: 'Szczegóły pacjenta',
                 formMode: 'showDetails',
                 formAction: '',
-                navLocation: "pat"
+                navLocation: "pat",
+                validationErrors: []
             });
         });
 
@@ -61,7 +64,19 @@ exports.addPatient = (req, res, next) => {
     patientsRepository.createPatient(patData)
         .then( result => {
             res.redirect('/patients');
-        });
+        }).catch(err => {
+
+            res.render('pages/patients/patient-form', {
+                pat: patData,
+                pageTitle: 'Dodawanie pacjenta',
+                formMode: 'createNew',
+                btnLabel: 'Dodaj pacjenta',
+                formAction: '/patients/add',
+                navLocation: 'pat',
+                validationErrors: err.errors
+            });
+
+        })
 };
 
 exports.updatePatient = (req, res, next) => {

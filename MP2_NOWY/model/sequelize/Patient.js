@@ -10,15 +10,42 @@ const Patient = sequelize.define('Patient', {
     },
     patName: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            len: {
+                args: [2, 60],
+                msg: "Pole powinno zawierać od 2 do 60 znaków"
+            },
+        }
     },
     sex: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            len: {
+                args: [2, 60],
+                msg: "Pole powinno zawierać od 2 do 60 znaków"
+            },
+        }
     },
     species: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            len: {
+                args: [2, 60],
+                msg: "Pole powinno zawierać od 2 do 60 znaków"
+            },
+        }
     },
     breed: {
         type: Sequelize.STRING,
@@ -26,16 +53,43 @@ const Patient = sequelize.define('Patient', {
     },
     age: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            len: {
+                args: [2, 60],
+                msg: "Pole powinno zawierać od 2 do 60 znaków"
+            },
+        }
     },
     ownerFirstName: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            len: {
+                args: [2, 60],
+                msg: "Pole powinno zawierać od 2 do 60 znaków"
+            },
+        }
     },
 
     ownerLastName: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            len: {
+                args: [2, 60],
+                msg: "Pole powinno zawierać od 2 do 60 znaków"
+            },
+        }
     },
 
     email: {
@@ -45,7 +99,16 @@ const Patient = sequelize.define('Patient', {
     },
     phone: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            len: {
+                args: [2, 60],
+                msg: "Pole powinno zawierać od 2 do 60 znaków"
+            },
+        }
     }
 });
 

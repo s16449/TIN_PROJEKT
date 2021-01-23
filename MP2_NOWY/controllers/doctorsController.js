@@ -20,7 +20,8 @@ exports.showDoctorForm = (req, res, next) => {
         formMode: 'createNew',
         btnLabel: 'Dodaj lekarza',
         formAction: '/doctors/add',
-        navLocation: "doc"
+        navLocation: "doc",
+        validationErrors: []
     });
 }
 
@@ -34,7 +35,8 @@ exports.showEditDoctorForm = (req, res, next) => {
                 formMode: 'edit',
                 btnLabel: 'Edytuj lekarza',
                 formAction: '/doctors/edit',
-                navLocation: "doc"
+                navLocation: "doc",
+                validationErrors: []
             });
         });
 }
@@ -50,7 +52,8 @@ exports.showDoctorDetails = (req, res, next) => {
                 pageTitle: 'Szczegóły lekarza',
                 formMode: 'showDetails',
                 formAction: '',
-                navLocation: "doc"
+                navLocation: "doc",
+                validationErrors: []
             });
         });
 }
@@ -60,7 +63,26 @@ exports.addDoctor = (req, res, next) => {
     doctorsRepository.createDoctor(docData)
         .then(result => {
             res.redirect('/doctors');
+        }).catch(err => {
+
+            err.errors.forEach(e => {
+                if (e.path.includes('email') && e.type == 'unique violation') {
+                    e.message = "[DB]Adres email jest przypisany do kogoś innego.";
+                }
+            })
+            console.log("Err " + err);
+            console.log("err details " + err.details);
+            res.render('pages/doctors/doctor-form', {
+                doc: docData,
+                pageTitle: 'Dodawanie lekarza',
+                formMode: 'createNew',
+                btnLabel: 'Dodaj lekarza',
+                formAction: '/doctors/add',
+                navLocation: 'doc',
+                validationErrors: err.errors
+            });
         });
+
 };
 
 exports.updateDoctor = (req, res, next) => {

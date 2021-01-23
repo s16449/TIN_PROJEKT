@@ -11,25 +11,50 @@
 
 
             <label for="firstName">Imię:<abbr title="required">*</abbr></label>
-            <input type="text" name="firstName" id="firstName" placeholder="2-60 znaków" value="<%= doc.firstName %>"
+            <input class="<%= validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : '' %>"
+                type="text" name="firstName" id="firstName" placeholder="2-60 znaków" value="<%= doc.firstName %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-            <span id="errorFirstName" class="errors-text"></span>
+            <span id="errorFirstName" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('firstName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('firstName')).message %>
+                        <% } %>
+            </span>
+
+
 
             <label for="lastName">Nazwisko:<abbr title="required">*</abbr></label>
-            <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków" value="<%= doc.lastName %>"
+
+            <input class="<%= validationErrors.find(e => e.path.includes('lastName')) ? 'error-input' : '' %>"
+                type="text" name="lastName" id="lastName" placeholder="2-60 znaków" value="<%= doc.lastName %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-            <span id="errorLastName" class="errors-text"></span>
+            <span id="errorLastName" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('lastName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('lastName')).message %>
+                        <% } %>
+            </span>
+
+
 
 
             <label for="specialization">Specjalizacja :<abbr title="required">*</abbr></label>
-            <input type="text" name="specialization" id="specialization" placeholder="2-60 znaków"
+            <input class="<%= validationErrors.find(e => e.path.includes('specialization')) ? 'error-input' : '' %>"
+                type="text" name="specialization" id="specialization" placeholder="2-60 znaków"
                 value="<%= doc.specialization %>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
-            <span id="errorSpecialization" class="errors-text"></span>
+            <span id="errorSpecialization" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('specialization'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('specialization')).message %>
+                        <% } %>
+            </span>
 
             <label for="email">Email:<abbr title="required">*</abbr></label>
-            <input type="email" name="email" id="email" placeholder="musi zawierać @" value="<%= doc.email %>"
+            <input class="<%= validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '' %>" type="email"
+                name="email" id="email" placeholder="musi zawierać @" value="<%= doc.email %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
-            <span id="errorEmail" class="errors-text"></span>
+            <span id="errorEmail" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('email'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('email')).message %>
+                        <% } %>
+            </span>
 
             <% if (formMode=='showDetails' ) { %>
                 <div class="form-button-submit">

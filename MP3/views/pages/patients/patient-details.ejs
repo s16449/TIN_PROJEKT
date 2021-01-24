@@ -1,0 +1,92 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Informacje o pacjencie</h2>
+
+
+        <form class="form">
+
+            <label for="petName">Imię pacjenta :</label>
+            <input type="text" name="petName" value="Marcel" id="petName" disabled />
+
+
+            <label for="species">Gatunek:<sup>*</sup></label>
+            <input type="text" value="krolik" name="species" id="species" disabled />
+
+            <label for="breed">Rasa:<sup>*</sup></label>
+            <input type="text" value="miniaturka" name="breed" id="breed" disabled />
+
+            <label for="sex">Płeć:</label>
+            <input type="text" value="żeńska" name="sex" id="sex" disabled />
+
+            <label for="age">Wiek:</label>
+            <input type="text" value="2 miesiace" name="age" id="age" disabled />
+
+            <label for="firstName">Imie wlaściciela:</label>
+            <input type="text" name="firstName" value="Maciej" id="firstName" disabled />
+
+            <label for="lastname">Nazwisko wlaściciela:</label>
+            <input type="text" name="lastname" value="Jasiński" id="lastname" disabled />
+
+
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="maciekmaciek@gmail.com" id="email" disabled />
+
+            <label for="phone">Telefon :</label>
+            <input type="text" name="phone" value="243-232-232" id="phone" disabled />
+
+            <!-- <label for="pets-info">Pupil :</label>
+            <select class="form-select" name="pets-info" id="pets-info">
+                <option value="1">Marcel</option>
+                <option value="2">Figa</option>
+                <option value="3">Milka</option>
+                <option value="4">Fluffy</option>
+                <option value="5">Frodo</option>
+                <option value="6">Rocket</option>
+            </select> -->
+            <% if(loggedUser) { %>
+                <div>
+
+                    <a href="/patients/add" class="list-actions-button-edit">Edytuj</a>
+
+                </div>
+                <% } %>
+        </form>
+
+
+
+
+        <h2>Szczegóły Leczenia</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Data wizyty</th>
+                        <th>Wizyta</th>
+                        <th>Przyjęty u lekarza</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2019-05-21</td>
+                        <td>Zabieg</td>
+                        <td>Jan Kowalski</td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>2020-10-12</td>
+                        <td>Badanie kontrolne</td>
+                        <td>Bartosz Pniewski</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-buttons">
+            <a href="/patients" class="form-button-back">Powrót</a>
+        </div>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

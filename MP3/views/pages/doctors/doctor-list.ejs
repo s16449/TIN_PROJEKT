@@ -1,0 +1,45 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Specjaliści</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th>Akcje</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let doc of docs) { %>
+                    <tr>
+                        <td><%= doc.firstName %></td>
+                        <td><%= doc.lastName %></td>
+                        <td><a href="mailto:jan.kowalski@lecznicaFrodo.pl"><%= doc.email %></a></td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/doctors/details/<%=doc._id%>" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <% if(loggedUser) { %>
+                                <li>
+                                    <a href="/doctors/edit/<%=doc._id%>" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="/doctors/delete/<%=doc._id%>" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                                <% } %>
+                            </ul>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div><% if(loggedUser) { %>
+        <p><a href="/doctors/add" class="button-add">Dodaj nowego lekarza</a></p>
+
+        <% } %>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

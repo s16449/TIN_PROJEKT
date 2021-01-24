@@ -1,0 +1,95 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <script type="application/javascript" src="../../js/validationCommon.js"></script>
+        <script type="application/javascript" src="../../js/validationVisitForm.js"></script>
+        <h2>
+            <%= pageTitle %>
+        </h2>
+        <form class="formRegister" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+
+            <input type="hidden" name="_id" value="<%= vis._id %>">
+
+            <label for="patientId">Imię pacjenta:<abbr title="required">*</abbr></label>
+            <select class="<%= validationErrors.find(e => e.path.includes('patientId')) ? 'error-input' : '' %>"
+                name="patientId" id="patientId" required <%=(formMode=='showDetails' ) ? 'disabled' : '' %> >
+                <option value="">--- Wybierz pacjenta ---</option>
+                <% for (let i=0; i<allPats.length; i++) { let pats=allPats[i]; %>
+                    <option value="<%= pats._id %>" label="<%= pats.patName + ' ' + pats.ownerLastName %>" <%=(vis._id
+                        && pats._id.toString()==vis.patients._id.toString()) ? 'selected' : '' %>></option>
+                    <% } %>
+            </select>
+            <span id="errorPatName" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('patientId'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('patientId')).message %>
+                        <% } %>
+            </span>
+
+
+
+            <label for="docId">Nazwisko lekarza:<abbr title="required">*</abbr></label>
+            <select class="<%= validationErrors.find(e => e.path.includes('docId')) ? 'error-input' : '' %>"
+                name="docId" id="docId" required <%=(formMode=='showDetails' ) ? 'disabled' : '' %> >
+                <option value="">--- Wybierz lekarza ---</option>
+                <% for (let i=0; i<allDocs.length; i++) { let docs=allDocs[i]; %>
+                    <option value="<%= docs._id %>" label="<%= docs.firstName + ' ' + docs.lastName %>" <%=(vis._id &&
+                        docs._id.toString()==vis.doctors._id.toString()) ? 'selected' : '' %>></option>
+                    <% } %>
+            </select>
+            <span id="errorDoctor" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('docId'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('docId')).message %>
+                        <% } %>
+            </span>
+
+            <label for="dateOf">Data wizyty: <abbr title="required">*</abbr></label>
+            <input class="<%= validationErrors.find(e => e.path.includes('dateOf')) ? 'error-input' : '' %>" type="date"
+                name="dateOf" id="dateOf" value="<%= vis.dateOf ? vis.dateOf.toISOString().split('T')[0] : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> >
+            <span id="errorVisitDate" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('dateOf'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('dateOf')).message %>
+                        <% } %>
+            </span>
+
+            <label for="purpose">Cel wizyty :<abbr title="required">*</abbr></label>
+            <input class="<%= validationErrors.find(e => e.path.includes('purpose')) ? 'error-input' : '' %>"
+                type="text" name="purpose" id="purpose" placeholder="2-60 znaków" value="<%= vis.purpose %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+
+            <span id="errorVisitPurpose" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('purpose'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('purpose')).message %>
+                        <% } %>
+            </span>
+
+            <label for="description">Opis wizyty i zalecenia:<abbr title="required">*</abbr></label>
+            <textarea class="<%= validationErrors.find(e => e.path.includes('description')) ? 'error-input' : '' %>"
+                name="description" id="description" rows="20" cols="50" required <%=(formMode=='showDetails' )
+                ? 'disabled' : '' %> ><%= vis.description %></textarea>
+            <span id="errorTextArea" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('description'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('description')).message %>
+                        <% } %>
+            </span>
+
+            <% if (formMode=='showDetails' ) { %>
+                <div class="form-button-submit">
+                    <a href="/visits/edit/<%= vis._id %>" class="button-edit">Edytuj</a>
+                </div>
+                <% } %>
+                    <div class="form-buttons-register">
+                        <p id="errorsSummary" class="errors-text"></p>
+                        <% if (formMode !='showDetails' ) { %>
+                            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                            <a class="form-button-cancel" href="/visits">Anuluj</a>
+                            <% } else { %>
+                                <a class="form-button-cancel" href="/visits">Powrót</a>
+                                <% } %>
+
+                    </div>
+
+        </form>
+
+
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

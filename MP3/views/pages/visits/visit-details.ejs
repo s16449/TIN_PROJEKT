@@ -1,0 +1,33 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        
+       
+        <h2>Historia wizyt</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Data wizyty</th>
+                        <th>Cel wizyty</th>
+                        <th>Przyjęty u lekarza</th>
+                        <th>Zalecenia / Informacje</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2019-05-21</td>
+                        <td>Zabieg</td>
+                        <td>Jan Kowalski</td>
+                        <td>Zabieg polegający na skróceniu ząbków. Większych nieprawidłowości nie stwierdzono. Królik
+                            dobrze się czuje. </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="form-buttons">
+            <a href="/visits" class="form-button-back">Powrót</a>
+        </div>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

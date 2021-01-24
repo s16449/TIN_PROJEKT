@@ -1,0 +1,55 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Wizyty</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię pacjenta</th>
+                        <th>Nazwisko lekarza</th>
+                        <th>Cel wizyty</th>
+                        <th>Data wizyty</th>
+                        <th>Informacje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let vis of visits) { %>
+                        <tr>
+                            <td>
+                                <%= vis.patients.patName %>
+                            </td>
+                            <td>
+                                <%= vis.doctors.lastName %>
+                            </td>
+                            <td>
+                                <%= vis.purpose %>
+                            </td>
+                            <td>
+                                <%= vis.dateOf.toISOString().split('T')[0] %>
+                            </td>
+                            <td>
+                                <ul class="list-actions">
+                                    <li>
+                                        <a href="/visits/details/<%=vis._id%>"
+                                            class="list-actions-button-details">Szczegóły</a>
+                                    </li>
+                                   
+                                    <li>
+                                        <a href="/visits/edit/<%=vis._id%>" class="list-actions-button-edit">Edytuj</a>
+                                    </li>
+                                    <li>
+                                        <a href="/visits/delete/<%=vis._id%>"
+                                            class="list-actions-button-delete">Usuń</a>
+                                    </li>
+                               
+                                </ul>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+        <p><a href="/visits/add" class="button-add">Dodaj nową wizytę</a></p>
+
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

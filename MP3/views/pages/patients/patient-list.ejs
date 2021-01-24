@@ -1,0 +1,57 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Pacjenci</h2>
+        <div class="scale-table">
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię pacjenta</th>
+                        <th>Gatunek</th>
+                        <th>Nazwisko właściciela</th>
+                        <th>Telefon kontaktowy</th>
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let pat of pats) { %>
+                        <tr>
+                            <td>
+                                <%= pat.patName %>
+                            </td>
+                            <td>
+                                <%= pat.species %>
+                            </td>
+                            <td>
+                                <%= pat.ownerLastName %>
+                            </td>
+                            <td>
+                                <%= pat.phone %>
+                            </td>
+                            <td>
+                                <ul class="list-actions">
+                                    <li>
+                                        <a href="/patients/details/<%=pat._id%>"
+                                            class="list-actions-button-details">Szczegóły</a>
+                                    </li>
+                                    <% if(loggedUser) { %>
+                                        <li>
+                                            <a href="/patients/edit/<%=pat._id%>"
+                                                class="list-actions-button-edit">Edytuj</a>
+                                        </li>
+                                        <li>
+                                            <a href="/patients/delete/<%=pat._id%>"
+                                                class="list-actions-button-delete">Usuń</a>
+                                        </li>
+                                        <% } %>
+                                </ul>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+        <% if(loggedUser) { %>
+            <p><a href="/patients/add" class="button-add">Dodaj nowego pacjenta</a></p>
+            <% } %>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

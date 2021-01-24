@@ -1,0 +1,142 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <script type="application/javascript" src="../../js/validationCommon.js"></script>
+        <script type="application/javascript" src="../../js/validationPatientForm.js"></script>
+        <h2>
+            <%= pageTitle %>
+        </h2>
+        <form class="formRegister" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+            <input type="hidden" name="_id" value="<%= pat._id %>">
+
+
+
+            <label for="patName">Imię pacjenta:<abbr title="required">*</abbr></label>
+            <input class="<%= validationErrors.find(e => e.path.includes('patName')) ? 'error-input' : '' %>"
+                type="text" name="patName" id="patName" placeholder="2-60 znaków" value="<%= pat.patName%>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
+            <span id="errorPatName" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('patName'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('patName')).message %>
+                        <% } %>
+            </span>
+
+            <label for="species">Gatunek:<abbr title="required">*</abbr></label>
+            <input class="<%= validationErrors.find(e => e.path.includes('species')) ? 'error-input' : '' %>"
+                type="text" name="species" id="species" placeholder="2-60 znaków" value="<%= pat.species%>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
+            <span id="errorSpecies" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('species'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('species')).message %>
+                        <% } %>
+            </span>
+
+            <label for="breed">Rasa:</label>
+            <input type="text" name="breed" id="breed" value="<%= pat.breed%>" <%=(formMode=='showDetails' )
+                ? 'disabled' : '' %>/>
+            <span></span>
+
+            <label for="sex">Płeć:<abbr title="required">*</abbr></label>
+            <input class="<%= validationErrors.find(e => e.path.includes('sex')) ? 'error-input' : '' %>" type="text"
+                name="sex" id="sex" placeholder="2-60 znaków" value="<%= pat.sex%>" <%=(formMode=='showDetails' )
+                ? 'disabled' : '' %>/>
+            <span id="errorSex" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('sex'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('sex')).message %>
+                        <% } %>
+            </span>
+
+            <label for="age">Wiek:<abbr title="required">*</abbr></label>
+            <input class="<%= validationErrors.find(e => e.path.includes('age')) ? 'error-input' : '' %>" type="text"
+                name="age" id="age" placeholder="można podać tekstowo / 2-60 znaków" value="<%= pat.age%>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
+            <span id="errorAge" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('age'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('age')).message %>
+                        <% } %>
+            </span>
+
+
+            <label for="ownerLastName">Nazwisko właściciela:<abbr title="required">*</abbr></label>
+            <input class="<%= validationErrors.find(e => e.path.includes('ownerLastName')) ? 'error-input' : '' %>"
+                type="text" name="ownerLastName" id="ownerLastName" placeholder="2-60 znaków"
+                value="<%= pat.ownerLastName%>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
+            <span id="errorLastName" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('ownerLastName'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('ownerLastName')).message %>
+                        <% } %>
+            </span>
+
+            <label for="ownerFirstName">Imię właściciela:<abbr title="required">*</abbr></label>
+            <input class="<%= validationErrors.find(e => e.path.includes('ownerFirstName')) ? 'error-input' : '' %>"
+                type="text" name="ownerFirstName" id="ownerFirstName" placeholder="2-60 znaków"
+                value="<%= pat.ownerFirstName%>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
+            <span id="errorFirstName" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('ownerFirstName'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('ownerFirstName')).message %>
+                        <% } %>
+            </span>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="<%= pat.email %>" <%=(formMode=='showDetails' )
+                ? 'disabled' : '' %> />
+            <span></span>
+
+            <label for="phone">Telefon :<abbr title="required">*</abbr></label>
+            <input class="<%= validationErrors.find(e => e.path.includes('phone')) ? 'error-input' : '' %>" type="text"
+                name="phone" id="phone" value="<%= pat.phone %>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+            <span id="errorPhone" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('phone'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('phone')).message %>
+                        <% } %>
+            </span>
+
+            <% if (formMode=='showDetails' && loggedUser) { %>
+                <div class="form-button-submit">
+                    <a href="/patients/edit/<%=pat._id %>" class="button-edit">Edytuj</a>
+                </div>
+                <% } %>
+
+                    <div class="form-buttons-register">
+                        <p id="errorsSummary" class="errors-text"></p>
+                        <% if (formMode !='showDetails' ) { %>
+                            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                            <a class="form-button-cancel" href="/patients">Anuluj</a>
+                            <% } else { %>
+                                <a class="form-button-cancel" href="/patients">Powrót</a>
+                                <% } %>
+                    </div>
+        </form>
+        <% if (formMode=='showDetails' || formMode=='edit' ) { %>
+            <h2>Szczegóły Leczenia</h2>
+            <div class="scale-table">
+                <table class="table-list">
+                    <thead>
+                        <tr>
+                            <th>Przyjęty u lekarza</th>
+                            <th>Data wizyty</th>
+                            <th>Cel wizyty</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let p of pat.visits) { %>
+                            <tr>
+                                <td><a href="/doctors/details/<%= p.doctors._id %>">
+                                        <%= p.doctors.firstName + " " + p.doctors.lastName %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <%= p.dateOf.toISOString().split('T')[0] %>
+                                </td>
+                                <td>
+                                    <%= p.purpose %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <% } %>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

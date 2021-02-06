@@ -1,5 +1,6 @@
 <%- include('../../fragments/header.ejs') %>
     <main>
+        <script type="application/javascript" src="../../js/toast.js"></script>
         <h2>Pacjenci</h2>
         <div class="scale-table">
             <table class="table-list">
@@ -39,7 +40,7 @@
                                                 class="list-actions-button-edit">Edytuj</a>
                                         </li>
                                         <li>
-                                            <a href="/patients/delete/<%=pat._id%>"
+                                            <a href="/patients/delete/<%=pat._id%>" onclick="patDelete()"
                                                 class="list-actions-button-delete">Usuń</a>
                                         </li>
                                         <% } %>

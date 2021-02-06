@@ -2,7 +2,7 @@ function validateForm() {
 
     const petNameInput = document.getElementById('patientId');
     const doctorInput = document.getElementById('docId');
-    
+
     const visitDateInput = document.getElementById('dateOf');
     const textAreaInput = document.getElementById('description');
     const visitPurposeInput = document.getElementById('purpose');
@@ -16,26 +16,26 @@ function validateForm() {
 
     const errorsSummary = document.getElementById('errorsSummary');
 
-    resetErrors([petNameInput,  visitDateInput, doctorInput, visitPurposeInput, textAreaInput], [errorPetName,  errorVisitDate, errorDoctor, errorVisitPurpose, errorTextArea], errorsSummary);
+    resetErrors([petNameInput, visitDateInput, doctorInput, visitPurposeInput, textAreaInput], [errorPetName, errorVisitDate, errorDoctor, errorVisitPurpose, errorTextArea], errorsSummary);
     let valid = true;
 
     if (!checkRequired(petNameInput.value)) {
         valid = false;
         petNameInput.classList.add("error-input");
         errorPetName.innerText = "Pole jest wymagane";
-    } 
+    }
 
     if (!checkRequired(doctorInput.value)) {
         valid = false;
         doctorInput.classList.add("error-input");
         errorDoctor.innerText = "Pole jest wymagane";
-    } 
+    }
 
- 
+
 
     let nowDate = new Date(),
         month = '' + (nowDate.getMonth() + 1),
-        day = '' + nowDate.getDate() -1,
+        day = '' + nowDate.getDate() - 1,
         year = nowDate.getFullYear();
     if (month.length < 2)
         month = '0' + month;
@@ -55,7 +55,8 @@ function validateForm() {
         valid = false;
         visitDateInput.classList.add("error-input");
         errorVisitDate.innerText = "Nie mozna zapisac wizyty wstecz";
-    } 
+    }
+
     if (!checkRequired(visitPurposeInput.value)) {
         valid = false;
         visitPurposeInput.classList.add("error-input");
@@ -78,6 +79,10 @@ function validateForm() {
 
     if (!valid) {
         errorsSummary.innerText = "Formularz zawiera błędy";
+    }
+
+    if (valid) {
+        alert("Wizyta dodana/edytowana pomyślnie");
     }
 
     return valid;

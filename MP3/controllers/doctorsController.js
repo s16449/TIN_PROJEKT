@@ -82,6 +82,7 @@ exports.addDoctor = (req, res, next) => {
                 validationErrors: err.errors
             });
         });
+       
 
 };
 

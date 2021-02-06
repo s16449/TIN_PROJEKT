@@ -100,6 +100,9 @@ function validateForm() {
         errorsSummary.innerText = "Formularz zawiera błędy";
     }
 
+    if (valid) {
+    alert("Pacjent dodany/edytowany pomyślnie");
+    }
     return valid;
 }
 

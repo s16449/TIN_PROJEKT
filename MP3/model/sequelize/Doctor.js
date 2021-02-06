@@ -11,7 +11,17 @@ const Doctor = sequelize.define('Doctor', {
 
     password: {
         type: Sequelize.STRING,
-         allowNull: false
+         allowNull: false,
+         validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane."
+            },
+            customValidator(value){
+                if(value.length < 5){
+                   throw new Error("Minimum 5 znaków")
+                }
+            },
+        }
      },
      
     firstName: {

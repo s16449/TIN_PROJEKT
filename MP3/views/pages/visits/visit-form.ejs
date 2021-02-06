@@ -1,7 +1,9 @@
 <%- include('../../fragments/header.ejs') %>
     <main>
         <script type="application/javascript" src="../../js/validationCommon.js"></script>
+
         <script type="application/javascript" src="../../js/validationVisitForm.js"></script>
+
         <h2>
             <%= pageTitle %>
         </h2>
@@ -15,7 +17,8 @@
                 <option value="">--- Wybierz pacjenta ---</option>
                 <% for (let i=0; i<allPats.length; i++) { let pats=allPats[i]; %>
                     <option value="<%= pats._id %>" label="<%= pats.patName + ' ' + pats.ownerLastName %>" <%=(vis._id
-                        && pats._id.toString()==vis.patients._id.toString()) ? 'selected' : '' %>></option>
+                        && pats._id.toString()==vis.patients._id.toString()) ? 'selected' : '' %>>
+                    </option>
                     <% } %>
             </select>
             <span id="errorPatName" class="errors-text">
@@ -32,7 +35,8 @@
                 <option value="">--- Wybierz lekarza ---</option>
                 <% for (let i=0; i<allDocs.length; i++) { let docs=allDocs[i]; %>
                     <option value="<%= docs._id %>" label="<%= docs.firstName + ' ' + docs.lastName %>" <%=(vis._id &&
-                        docs._id.toString()==vis.doctors._id.toString()) ? 'selected' : '' %>></option>
+                        docs._id.toString()==vis.doctors._id.toString()) ? 'selected' : '' %>>
+                    </option>
                     <% } %>
             </select>
             <span id="errorDoctor" class="errors-text">

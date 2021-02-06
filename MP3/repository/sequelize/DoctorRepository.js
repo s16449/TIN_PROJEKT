@@ -27,22 +27,18 @@ exports.getDoctorById = (docId) => {
 };
 
 exports.createDoctor = (newDocData) => {
+    const pass = authUtil.hashPassword(newDocData.password);
     return Doctor.create({
         firstName: newDocData.firstName,
         lastName: newDocData.lastName,
         email: newDocData.email,
         specialization: newDocData.specialization,
-        password: authUtil.hashPassword(newDocData.password)
+        password: pass
     });
 };
 
 exports.updateDoctor = (docId, docData) => {
-    const firstName = docData.firstName;
-    const lastName = docData.lastName;
-    const email = docData.email;
-    const specialization = docData.specialization;
     docData.password = authUtil.hashPassword(docData.password);
-    const password = authUtil.hashPassword(docData.password);
     return Doctor.update(docData, { where: { _id: docId } });
 };
 
@@ -51,11 +47,11 @@ exports.deleteDoctor = (docId) => {
         where: { _id: docId }
     });
 
-}; 
+};
 
 exports.findByEmail = (email) => {
     return Doctor.findOne({
-        where: {email: email}
+        where: { email: email }
     });
 }
 
